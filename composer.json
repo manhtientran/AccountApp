@@ -1,0 +1,15 @@
+{
+    "name": "tienm/base-account-scratch",
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "authors": [
+        {
+            "name": "Manh Tran",
+            "email": "tienmanh.tran68@gmail.com"
+        }
+    ],
+    "require": {}
+}
