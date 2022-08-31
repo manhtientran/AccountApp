@@ -12,10 +12,18 @@ class AuthController extends Controller {
         // ];
         // return Application::$app->router->renderView("register", $params);
         
-        $body = $request->getBody();
-        var_dump($body);
+        // $body = $request->getBody();
+        // var_dump($body);
 
+        if ($request->isPost()) {
+            return "handle submit data";
+        }
+        
         return $this->render("register");
+    }
+
+    public function login() {
+        return $this->render("login");
     }
 }
 ?>
