@@ -3,7 +3,7 @@
 
 <form action="" method="post" >
   <label>Email</label><br>
-  <input type="text" name="email"><br>
+  <input type="email" name="email"><br>
   <label>Username</label><br>
   <input type="text" name="userName"><br>
   <label>Name</label><br>
