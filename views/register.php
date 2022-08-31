@@ -1,4 +1,5 @@
 <h2>Create a new account</h2>
+<!-- <h1>Hello <?php $name ?></h1> -->
 
 <form action="" method="post" >
   <label>Email</label><br>
