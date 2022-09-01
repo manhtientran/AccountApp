@@ -27,9 +27,11 @@ class Application {
         $primaryValue = $this->session->get("user");
         
         if ($primaryValue) {
+            // var_dump($primaryValue);
             $userObj = new User();
             $primaryKey = $userObj->primaryKey();
             $this->user = $userObj->findOne([$primaryKey => $primaryValue]);
+            // var_dump($this->user);
         }
         else {
             $this->user = null;
@@ -41,7 +43,7 @@ class Application {
         try {
             echo $this->router->resolve();
         } catch(\Exception $e) {
-            $this->response->setStatusCode($e->getCode());
+            // $this->response->setStatusCode($e->getCode());
             echo $this->router->renderView("_error", [
                 "exception" => $e
             ]);
