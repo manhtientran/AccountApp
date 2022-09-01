@@ -16,10 +16,11 @@
                     <p class="left bold"><?php
 
                                             use app\core\Application;
+
                                             echo $user->name ?></p>
                 </div>
                 <div class="right">
-                    <button  class="blue buttonProfile" id="editAccount">Edit my account</button>
+                    <button class="blue buttonProfile" id="editAccount">Edit my account</button>
 
                     <a href="/logout"><button class="blue buttonProfile">Logout</button></a>
                 </div>
@@ -27,7 +28,7 @@
             </div>
 
             <div>
-                <form>
+                <form action="" method="post" id="modifyUserInfo">
                     <div class="form-group">
                         <label>Email</label><br>
                         <input type="email" name="email" disabled value=<?php echo $user->email ?>>
@@ -39,6 +40,18 @@
                     </div>
 
                     <div class="form-group">
+                        <label>First name</label><br>
+                        <input type="text" name="firstName" value="<?php echo $user->firstName ?>" disabled>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Last name</label><br>
+                        <input type="text" name="firstName" value="<?php echo $user->lastName ?>" disabled>
+
+                    </div>
+
+                    <div class="form-group">
                         <label>Name</label><br>
                         <input class="editable" type="text" name="name" value="<?php echo $user->name ?>" disabled>
 
@@ -46,12 +59,12 @@
 
                     <div class="form-group">
                         <label>Company name</label><br>
-                        <input class="editable" type="text" name="companyName" value=<?php echo $user->companyName ?> disabled>
+                        <input class="editable" type="text" name="companyName" value="<?php echo $user->companyName ?>" disabled>
                     </div>
 
                     <div class="form-group">
                         <label>Job title</label><br>
-                        <input class="editable" type="text" name="jobTitle" value=<?php echo $user->jobTitle ?> disabled>
+                        <input class="editable" type="text" name="jobTitle" value="<?php echo $user->jobTitle ?>" disabled>
                     </div>
 
                     <br>
@@ -73,9 +86,20 @@
 <script>
     $("#editAccount").click(function() {
         $(".editable").attr("disabled", false);
+        $("#changeInfo").attr("hidden", false);
     });
 
+    $(document).ready(function() {
+        $(window).keydown(function(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                return false;
+            }
+        });
+    });
+
+
     $("#changeInfo").click(function() {
-        
+        $("$modifyUserInfo").submit();
     });
 </script>

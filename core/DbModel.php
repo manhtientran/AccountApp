@@ -1,6 +1,8 @@
 <?php 
 namespace app\core;
 
+use app\models\User;
+
 abstract class DbModel extends Model {
     abstract public function tableName(): string;
 
@@ -41,6 +43,10 @@ abstract class DbModel extends Model {
 
         $statement->execute();
         return $statement->fetchObject(static::class);
+
+    }
+
+    public function updateOne($where) {
 
     }
 }
