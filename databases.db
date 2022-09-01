@@ -1,3 +1,7 @@
+CREATE DATABASE baa;
+
+USE baa;
+
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(255) NOT NULL,
@@ -8,5 +12,6 @@ CREATE TABLE IF NOT EXISTS users (
     companyName VARCHAR(255),
     jobTitle VARCHAR(255),
     password VARCHAR(255) NOT NULL,
-    avatar BLOB
+    avatar BLOB,
+    avatarName VARCHAR(255)
 ) ENGINE=INNODB;
