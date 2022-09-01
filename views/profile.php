@@ -13,10 +13,15 @@
         <div id="sub_divProfile2">
             <div>
                 <div class="left bold">
-                    <p class="left bold"><?php echo $user->name ?></p>
+                    <p class="left bold"><?php
+
+                                            use app\core\Application;
+                                            echo $user->name ?></p>
                 </div>
                 <div class="right">
-                    <button class="blue" id="editProfile">Edit my account</button>
+                    <button  class="blue buttonProfile" id="editAccount">Edit my account</button>
+
+                    <a href="/logout"><button class="blue buttonProfile">Logout</button></a>
                 </div>
                 <div class="clearBoth"></div>
             </div>
@@ -30,26 +35,27 @@
 
                     <div class="form-group">
                         <label>Username</label><br>
-                        <input type="text" name="userName" disabled value=<?php echo $user->username ?? null ?>>
+                        <input type="text" name="userName" disabled value=<?php echo $user->username ?>>
                     </div>
 
                     <div class="form-group">
                         <label>Name</label><br>
-                        <input type="text" name="name" value=<?php echo $user->name ?>>
+                        <input class="editable" type="text" name="name" value="<?php echo $user->name ?>" disabled>
+
                     </div>
 
                     <div class="form-group">
                         <label>Company name</label><br>
-                        <input type="text" name="companyName" value=<?php echo $user->companyName ?>>
+                        <input class="editable" type="text" name="companyName" value=<?php echo $user->companyName ?> disabled>
                     </div>
 
                     <div class="form-group">
                         <label>Job title</label><br>
-                        <input type="text" name="jobTitle"  value=<?php echo $user->jobTitle ?>>
+                        <input class="editable" type="text" name="jobTitle" value=<?php echo $user->jobTitle ?> disabled>
                     </div>
 
                     <br>
-                    <input type="submit" value="Create an account">
+                    <button class="blue" id="changeInfo" hidden>Change account information</button>
                 </form>
 
             </div>
@@ -63,3 +69,13 @@
     <br class="clearBoth" />
 
 </div>
+
+<script>
+    $("#editAccount").click(function() {
+        $(".editable").attr("disabled", false);
+    });
+
+    $("#changeInfo").click(function() {
+        
+    });
+</script>

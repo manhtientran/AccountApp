@@ -103,7 +103,7 @@ button {
   float: left;
 }
 
-#editProfile {
+.buttonProfile {
   width: 300px;
 }
 
@@ -145,4 +145,3 @@ button {
 }
 
 .clearBoth { clear:both; }
-
