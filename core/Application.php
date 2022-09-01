@@ -56,7 +56,6 @@ class Application {
         $primaryValue = $user->{$primaryKey};
         
         $this->session->set("user", $primaryValue);
-        return true;
     }
 
     public function logout() {

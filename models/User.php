@@ -21,6 +21,16 @@ class User extends DbModel {
         $this->lastName = implode(" ", array_slice($namePiece, 0, sizeof($namePiece) - 1));
         $this->password = password_hash($this->password, PASSWORD_DEFAULT);
 
+        // Check UNIQUE for email and username
+        $userObj = new User();
+        if ($userObj->findOne(["email" => $this->email])) {
+            return "This email is already existed";
+        }
+
+        if ($userObj->findOne(["userName" => $this->userName])) {
+            return "This username is already existed";
+        }
+
         return parent::save();
     }
 

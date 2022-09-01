@@ -15,16 +15,17 @@ class LoginForm extends Model {
         ]);
 
         if (!$user) {
-            return false;
+            return "This email doesn't exist.";
         } 
 
         if (!password_verify($this->password, $user->password)) {
-            return false;
+            return "Password doesn't match.";
         }
 
         // var_dump($user);
 
-        return Application::$app->login($user);
+        Application::$app->login($user);
+        return true;
     }
 }
 ?>

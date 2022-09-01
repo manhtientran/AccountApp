@@ -1,0 +1,80 @@
+html, body {
+    font-family: Roboto;
+    margin: 0px;
+}
+
+#master::after {
+    position:absolute;
+	left:600px;
+	right:0px;
+	top:0px;
+	bottom:0px;
+	content:"";
+	background-image:url(https://static-gcdn.basecdn.net/account/image/background.png);
+	background-position: bottom;
+	background-size: cover;
+}
+
+#page {
+    width: 600px;
+    padding: 0px 50px;
+    box-sizing: border-box;
+}
+
+label {
+    font-weight: bold;
+}
+
+
+#abovePage {
+    border-bottom: 3px LightGray solid;
+    text-align: center;
+    margin: 20px;
+}
+
+#belowPage {
+    margin: 20px;
+    
+}
+
+.form-group {
+    margin: 10px 0px;
+}
+
+.form-group input {
+    margin: 5px 0px;
+    width: 100%;
+    height: 30px;
+    font-size: 16px;
+    padding: 4px;
+    /* border-color: lightgray; */
+    box-sizing: border-box;
+}
+
+
+form input[type="submit"] {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    border: 0px;
+    text-align: center;
+    background-color: #2bd14e;
+    font-size: 14px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.error{
+    color: #D8000C;
+    background-color: #FFBABA;
+    border-radius: 10px;
+    padding: 10px;
+}
