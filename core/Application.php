@@ -9,6 +9,7 @@ class Application {
     public Request $request;
     public Response $response;
     public static Application $app;
+    public ?Controller $controller = null;
     public Session $session;
     public Database $db;
     public ?DbModel $user;
@@ -37,7 +38,14 @@ class Application {
     }
 
     public function run() {
-        echo $this->router->resolve();
+        try {
+            echo $this->router->resolve();
+        } catch(\Exception $e) {
+            $this->response->setStatusCode($e->getCode());
+            echo $this->router->renderView("_error", [
+                "exception" => $e
+            ]);
+        }
     }
 
     public function login(DbModel $user) {
@@ -49,9 +57,13 @@ class Application {
         return true;
     }
 
-    public function logout(DbModel $user) {
+    public function logout() {
         $this->user = null;
         $this->session->remove("user");
+    }
+
+    public static function isGuest() {
+        return self::$app->user == null;
     }
 }
 ?>
