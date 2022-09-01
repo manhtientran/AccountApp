@@ -1,8 +1,11 @@
 <?php
 
-// use app\core\Application;
-
+use app\core\Application;
 //  var_dump(Application::$app->user) ?>
+
+<pre>
+    <?php echo var_dump(Application::$app->user) ?>
+</pre>
 
 <!DOCTYPE html>
 <html lang="en">

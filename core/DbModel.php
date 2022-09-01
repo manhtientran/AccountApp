@@ -16,7 +16,11 @@ abstract class DbModel extends Model {
         foreach($attributes as $attribute) {
             $statement->bindValue(":$attribute", $this->{$attribute});
         }
-        var_dump($params, $attributes, $statement);
+        
+        // echo "<pre>";
+        // var_dump($params, $attributes, $statement);
+        // echo "</pre>";
+
 
         $statement->execute();
         return true;
@@ -37,6 +41,7 @@ abstract class DbModel extends Model {
 
         $statement->execute();
         return $statement->fetchObject(static::class);
+
     }
 }
 

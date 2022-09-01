@@ -26,6 +26,9 @@
         <br>
         <input type="submit" value="Login to start working">
       </form>
+      <hr>
+      <a href="/register"><button type="button" class="blue">Create a new account</button></a>
+
     </div>
   </div>
 </div>

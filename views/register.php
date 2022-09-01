@@ -44,6 +44,8 @@
         <br>
         <input type="submit" value="Create an account">
       </form>
+      <hr>
+        <a href="/login"><button type="button" class="blue">Login</button></a>
     </div>
   </div>
 </div>
