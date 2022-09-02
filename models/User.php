@@ -15,6 +15,7 @@ class User extends DbModel {
 
     public string $firstName;
     public string $lastName;
+    public string $avatarName = "";
 
     public function save() {
         $namePiece = explode(" ", $this->name);
@@ -47,6 +48,10 @@ class User extends DbModel {
             $where["lastName"] = Application::$app->user->lastName;
 
         }
+
+        if (array_key_exists("avatarName", $where)) {
+            Application::$app->user->avatarName = $where["avatarName"];
+        }
         
         $tableName = static::tableName();
         $attributes = array_keys($where);
@@ -73,7 +78,7 @@ class User extends DbModel {
 
     public function attributes(): array
     {
-        return ["email", "userName", "name", "firstName", "lastName", "companyName", "jobTitle", "password"];
+        return ["email", "userName", "name", "firstName", "lastName", "companyName", "jobTitle", "password", "avatarName"];
     }
     
 

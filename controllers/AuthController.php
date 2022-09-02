@@ -119,17 +119,20 @@ class AuthController extends Controller
 
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
             echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
-            foreach($files as $file) {
+            // foreach($files as $file) {
    
-                if(is_file($file) && $file !== $target_file) 
+            //     if(is_file($file) && $file !== $target_file) 
                 
-                    // Delete the given file
-                    unlink($file); 
-            }
+            //         // Delete the given file
+            //         unlink($file); 
+            // }
         } else {
             echo "Sorry, there was an error uploading your file.";
         }
 
+        $user = Application::$app->user;
+        $user->updateOne(["avatarName" => $target_file]);
+        $response->redirect("/profile");
 
     }
 }
