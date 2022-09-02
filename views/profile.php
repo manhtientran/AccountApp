@@ -28,6 +28,26 @@
             </div>
 
             <div>
+                <form action="/uploadImage" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label>Choose avatar</label><br>
+                        <input type="file" name="fileToUpload" id="fileToUpload">
+
+                        <div><img width="100px" height="100px" src="<?php
+                                                                    $folder_path = "uploads/";
+                                                                    $files = glob($folder_path . '*');
+                                                                    // var_dump($files);
+                                                                    if ($files[0])
+                                                                        echo $files[0];
+                                                                    else
+                                                                        echo "https://www.citypng.com/public/uploads/small/11639594342hjraqgbufi3xlb66lt30fz1pwfcydxkjqbynfqdpvufz41ysjtngiet4dyrywgqqqqu56w5nozgrhyecs4ixrlllkl150ogbiid1.png";
+
+                                                                    ?>" alt=""></div>
+                    </div>
+
+                    <input type="submit" value="Upload Image" name="submit">
+                </form>
+
                 <form action="" method="post" id="modifyUserInfo">
                     <div class="form-group">
                         <label>Email</label><br>

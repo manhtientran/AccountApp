@@ -15,6 +15,7 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->registerMiddleware(new AuthMiddleware(["profile"]));
+        $this->registerMiddleware(new AuthMiddleware(["uploadImage"]));
     }
 
 
@@ -92,8 +93,8 @@ class AuthController extends Controller
         $response->redirect("/");
     }
 
-    public function profile(Request $request, Response $response) 
-    {   
+    public function profile(Request $request, Response $response)
+    {
         $user = Application::$app->user;
 
         if ($request->isPost()) {
@@ -105,5 +106,30 @@ class AuthController extends Controller
         return $this->render("profile", [
             "user" => Application::$app->user
         ]);
+    }
+
+    public function uploadImage(Request $request, Response $response)
+    {
+        // $target_dir = Application::$ROOT_DIR . "/public/uploads";
+        $target_dir = "uploads/";
+        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+
+        $folder_path = "uploads/";
+        $files = glob($folder_path.'/*'); 
+
+        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+            echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
+            foreach($files as $file) {
+   
+                if(is_file($file) && $file !== $target_file) 
+                
+                    // Delete the given file
+                    unlink($file); 
+            }
+        } else {
+            echo "Sorry, there was an error uploading your file.";
+        }
+
+
     }
 }

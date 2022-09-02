@@ -1,3 +1,5 @@
+-- sudo mysql
+
 CREATE DATABASE baa;
 
 USE baa;

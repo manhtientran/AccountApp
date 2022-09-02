@@ -26,6 +26,9 @@ $app->router->post("/login", [AuthController::class, "login"]);
 $app->router->get("/profile", [AuthController::class, "profile"]);
 $app->router->post("/profile", [AuthController::class, "profile"]);
 
+$app->router->post("/uploadImage", [AuthController::class, "uploadImage"]);
+
+
 $app->router->get("/logout", [AuthController::class, "logout"]);
 
 $app->run();
