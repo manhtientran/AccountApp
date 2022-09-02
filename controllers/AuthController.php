@@ -70,7 +70,19 @@ class AuthController extends Controller
             $loginForm = new LoginForm();
             if ($request->isPost()) {
                 $loginForm->loadData($request->getBody());
-                if ($loginForm->validate()) {
+
+                $captchaResponse = [];
+                if (isset($_POST['submit'])) {
+                    $secretKey = "6LeoD8ohAAAAAGdqPUAMf8-NGSRb9gPttrrS2Iso";
+                    $responseKey = $_POST['g-recaptcha-response'];
+                    $userIP = $_SERVER['REMOTE_ADDR'];
+
+                    $url = "https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$responseKey&remoteip=$userIP";
+                    $captchaResponse = file_get_contents($url);
+                    $captchaResponse = json_decode($captchaResponse);
+                }
+
+                if ($captchaResponse->success) {
                     $res = $loginForm->login();
                     if ($res === true) {
                         $response->redirect("/profile");
@@ -81,7 +93,11 @@ class AuthController extends Controller
                             "message" => $res
                         ]);
                     }
-                }
+                } else
+                    return $this->render("login", [
+                        "code" => 400,
+                        "message" => "Please check the captcha box"
+                    ]);
             }
             return $this->render("login");
         }
@@ -115,14 +131,14 @@ class AuthController extends Controller
         $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 
         $folder_path = "uploads/";
-        $files = glob($folder_path.'/*'); 
+        $files = glob($folder_path . '/*');
 
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
             echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
             // foreach($files as $file) {
-   
+
             //     if(is_file($file) && $file !== $target_file) 
-                
+
             //         // Delete the given file
             //         unlink($file); 
             // }
@@ -133,6 +149,5 @@ class AuthController extends Controller
         $user = Application::$app->user;
         $user->updateOne(["avatarName" => $target_file]);
         $response->redirect("/profile");
-
     }
 }

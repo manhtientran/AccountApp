@@ -23,10 +23,10 @@
         <input type="password" name="password" placeholder="Password" required>
         </div>
 
-        <div class="g-recaptcha" data-sitekey="6LfjrsYhAAAAAJfYYVYeD0ROTwEGCLAeFrSjQyE2"></div>
+        <div class="g-recaptcha" data-sitekey="6LeoD8ohAAAAAD_QGQ5cxZ-0ABYX0_T4vlUh6HkJ"></div>
 
         <br>
-        <input type="submit" value="Login to start working">
+        <input type="submit" name="submit" value="Login to start working">
       </form>
       <hr>
       <a href="/register"><button type="button" class="blue">Create a new account</button></a>

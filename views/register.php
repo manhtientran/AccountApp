@@ -41,8 +41,6 @@
         <input type="password" name="password" placeholder="Password" required>
         </div>
 
-        <div class="g-recaptcha" data-sitekey="6LfjrsYhAAAAAJfYYVYeD0ROTwEGCLAeFrSjQyE2"></div>
-
         <br>
         <input type="submit" value="Create an account">
       </form>
