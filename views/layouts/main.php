@@ -3,6 +3,19 @@
 use app\core\Application;
 //  var_dump (Application::$app->user) ;
 // var_dump(Application::$app->user->name);
+
+// setcookie(
+//     $name = "manh1",
+//     $value = "valueOfManh1",
+//     $expires_or_options = time()+60*60*24*30,
+//     $path = "/",
+//     $domain = "127.0.0.1",
+//     $secure = false,
+//     $httponly = false
+// );
+
+// echo $_COOKIE['manh1'];
+
 ?>
 
 
